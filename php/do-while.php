@@ -1,11 +1,14 @@
 <?php
 
-$number = 0;
+$number = 100;
 
+echo "$number\n";
 do{
 
-$number = $number + 2;
+//echo "$number\n";	
+
+$number = $number - 5;
 
 echo "$number\n";
 
-} while ($number < 100);
+} while ($number > -10);
