@@ -15,7 +15,7 @@
      	echo "$b is greater or equal to $c\n" ;
      }else{
 
-         echo "$b is less or equal to $c\n" ;
+         echo "$b is less than or equal to $c\n" ;
      }
 
 
