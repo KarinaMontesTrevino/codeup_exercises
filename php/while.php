@@ -1,13 +1,13 @@
 <?php
-$test = 5;
+$test = 5;  //declare and initialize
 
-while($test <=15){
+while($test <=15){   //test if the condition is true
 
-   echo "$test\n";
-   $test++;
+   echo "$test\n";    //print the value of $test
+   $test++;           //increment $test by 1
 
 }
 
-echo "\nI'm done!!\n";
+echo "\nI'm done!!\n";  //show this when the program no longer meets the condition
 
 ?>
