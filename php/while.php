@@ -8,6 +8,6 @@ while($test <=15){   //test if the condition is true
 
 }
 
-echo "\nI'm done!!\n";  //show this when the program no longer meets the condition
+echo "\nI'm done!!\n\n";  //show this when the program no longer meets the condition
 
 ?>
