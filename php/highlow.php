@@ -7,7 +7,7 @@
 do{
 
   //prompts user to guess the random number
-  fwrite(STDOUT, 'Guess? ');
+  fwrite(STDOUT, 'Guess a number between 1 and 100 ? ');
   
  //allocate the input from user in a variable 
      $guess_number = fgets(STDIN);
@@ -19,10 +19,10 @@ do{
   } elseif ($guess_number < $random_number){
   	echo "Please guess higher\n"; // if user guess number is lower tell them to guess higher
   } else{
-    echo "please guess lower\n";
+    echo "please guess lower\n"; // if the user guess number is higger tell them to guess lower
   }
 
-}while($guess_number != $random_number);
+}while($guess_number != $random_number); //do this until the user guess the right number
 exit(0);
 
 
