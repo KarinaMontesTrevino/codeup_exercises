@@ -15,15 +15,16 @@ do{
 
 
   if($guess_number == $random_number){
-    echo "Congratulations, YOU WIN!\n";  //if user guess is correct tell them he/she wins
+    echo "Congratulations, YOU WIN!\n\n";  //if user guess is correct tell them he/she wins
   } elseif ($guess_number < $random_number){
-  	echo "Please guess higher\n"; // if user guess number is lower tell them to guess higher
+  	echo "Please guess higher\n\n"; // if user guess number is lower tell them to guess higher
   } else{
-    echo "please guess lower\n"; // if the user guess number is higger tell them to guess lower
+    echo "please guess lower\n\n"; // if the user guess number is higher tell them to guess lower
   }
 
+exit(0); //exit the program
 }while($guess_number != $random_number); //do this until the user guess the right number
-exit(0);
+
 
 
 ?>
