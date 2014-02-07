@@ -29,7 +29,7 @@ do{
   }
 
 }while($guess_number != $random_number); //do this until the user guess the right number
-echo "Number of guesses: $counte_guesses\n\n";//number of times the user guessed
+echo "Number of guesses: $count_guesses\n\n";//number of times the user guessed
 
 exit(0); //exit the program 
  
