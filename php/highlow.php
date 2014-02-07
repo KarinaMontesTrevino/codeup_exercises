@@ -4,7 +4,7 @@
    $random_number = mt_rand (1, 100);
 
    //counts the number of guesses
-   $counter = 0;
+   $count_guesses = 0;
 
 do{
 
@@ -29,7 +29,7 @@ do{
   }
 
 }while($guess_number != $random_number); //do this until the user guess the right number
-echo "Number of guesses: $counter\n\n";//number of times the user guessed
+echo "Number of guesses: $counte_guesses\n\n";//number of times the user guessed
 
 exit(0); //exit the program 
  
