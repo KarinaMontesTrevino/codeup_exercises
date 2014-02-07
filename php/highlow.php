@@ -1,10 +1,36 @@
 <?php
+  // test if the arguments passed are 3 if not exit the program
+   if ($argc !==3){
 
-  //pick a random  number
-   $random_number = mt_rand (1, 100);
+    echo "Not the right number of arguments passed, try again!\n"; // tell the user that the arguments passed should be 3
+     exit(0);
+   }
+
+   $min = $argv[1];  //assign argument 1 in the array to min
+   $max = $argv[2];  //assing argument 2 in the array to max
+
+   //$min = is_numeric($argv[1]) ?  intval($argv[1]) : 1;
+   //$max = is_numeric($argv[2]) ?  intval($argv[2]) : 2;
+
+   // test if the first argument passed is numeric if not exit the program
+   if(!is_numeric($min) || !is_numeric($max)){
+      echo "Check your arguments, they should be numeric !!!\n"; // tell the user that arguments should be numeric
+      exit(0);
+   }
+
+   //test if the second argument passed is numeric if not exit the program
+   if($min >= $max){
+      echo "Check your numbers, the first number should be less than the second number!!!\n"; // tell the user that arguments should be numeric
+      exit(0);     
+   
+   }
+
+  // pick a random  number
+   $random_number = mt_rand ($min, $max);
 
    //counts the number of guesses
    $count_guesses = 0;
+
 
 do{
 
@@ -14,7 +40,7 @@ do{
  //allocate the input from user in a variable 
   $guess_number = fgets(STDIN);
    
- //add loop number to counter
+ //increment by 1 number of guesses
   $count_guesses ++;   
 
     if($guess_number == $random_number){  //test if the guess is the same number as the random number
