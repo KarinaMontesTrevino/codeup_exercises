@@ -9,7 +9,7 @@
 do{
 
   //prompts user to guess the random number
-  fwrite(STDOUT, 'Guess a number between 1 and 100 ');
+  fwrite(STDOUT, "Guess a number between 1 and 100\n");
   
  //allocate the input from user in a variable 
   $guess_number = fgets(STDIN);
