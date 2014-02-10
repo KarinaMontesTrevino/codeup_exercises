@@ -6,7 +6,7 @@ date_default_timezone_set('America/Chicago');
 
 // Get Day of Week as number
 // 1 (for Monday) through 7 (for Sunday)
-$days_week= date('N');
+$days_week= rand(1,7);
 
 switch($days_week) {
     case 1:
