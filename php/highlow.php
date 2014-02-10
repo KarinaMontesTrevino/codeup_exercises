@@ -10,15 +10,15 @@
    $max = $argv[2];  //assing argument 2 in the array to max
 
    //$min = is_numeric($argv[1]) ?  intval($argv[1]) : 1;
-   //$max = is_numeric($argv[2]) ?  intval($argv[2]) : 2;
+   //$max = is_numeric($argv[2]) ?  intval($argv[2]) : 2;   ternary option
 
-   // test if the first argument passed is numeric if not exit the program
+   // test if the arguments passed are numeric if not exit the program
    if(!is_numeric($min) || !is_numeric($max)){
       echo "Check your arguments, they should be numeric !!!\n"; // tell the user that arguments should be numeric
       exit(0);
    }
 
-   //test if the second argument passed is numeric if not exit the program
+   //test if the first number is less than the second if not exit the program
    if($min >= $max){
       echo "Check your numbers, the first number should be less than the second number!!!\n"; // tell the user that arguments should be numeric
       exit(0);     
