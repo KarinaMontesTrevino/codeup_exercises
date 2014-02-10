@@ -17,10 +17,10 @@
           
             echo "{$element} is a float\n";
 
-   // if the element in the array is boolean then don't print anything       
+   // if the element in the array is boolean then print the message      
    		}elseif (is_bool($element)){
 
-   			echo "\n"; 
+   			echo var_dump($element) . "\n"; 
    
    // if the element in the array is an array prin the content of that array
    		}elseif (is_array($element)){
@@ -38,7 +38,7 @@
    		}elseif (is_null($element)){
    			echo "\n";
  
-    // if the element in the array is  strin then print the message
+    // if the element in the array is  string then print the message
    		}elseif (is_string($element)){
    			echo "{$element} is a string\n";
    		}
