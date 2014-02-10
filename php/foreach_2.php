@@ -30,17 +30,18 @@ $books = array(
 );
 
 // iterates through each element of the array books and prints the book
-foreach ($books as $book => $book_array ){
+foreach ($books as $title => $book ){
 
 echo "\n";
 
-echo "Book title: {$book}\n";
-    
-    // iterates though each element of the second array and prints the different attributes in that array
-    foreach ($book_array as $key => $atribute){
+    // prints only the books published after 1950
+           if ($book['published'] > '1950'){
 
-       echo  "{$key} :  {$atribute}" . "\n";
-   }
+               echo $title . "\n";
+               echo "Published: " . $book['published'] . "\n";
+               echo  "Author :  " . $book['author']  . "\n";
+               echo  "Pages : " . $book['pages'] . "\n";
+            }
    
 
 } //close main foreach
