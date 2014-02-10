@@ -20,7 +20,7 @@
    // if the element in the array is boolean then print the message      
    		}elseif (is_bool($element)){
 
-   			echo var_dump($element) . "\n"; 
+   			echo var_dump($element); 
    
    // if the element in the array is an array prin the content of that array
    		}elseif (is_array($element)){
