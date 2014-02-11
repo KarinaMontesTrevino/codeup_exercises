@@ -21,8 +21,9 @@ function multiply($number1, $number2){
 
 // function that divides two numbers and prints the result of the division 
 function divide($number1, $number2){
+	check_numeric($number1, $number2);
 	 if ( $number2 === 0) {
-      	echo "We can't devide by 0";
+      	return false;
    }else{
       	return ($a / $b);
 		}
@@ -40,17 +41,18 @@ function check_numeric($number1, $number2){
         echo "[ERROR] Invalid input, both arguments should be numeric\n";
         var_dump($number1);
         var_dump($number2);
-         //exit(0);
+        return false;
+     }else{
+     	return true;
      }     
 
 }
 
 
-echo add(10, 'asd' ) . PHP_EOL; 
+echo add(10, 5) . PHP_EOL; 
 echo susbtract (40, 30) . PHP_EOL; 
 echo multiply(40, 5) . PHP_EOL; 
 echo divide(10, 0) . PHP_EOL; 
-echo modulus(10, 5) . PHP_EOL; 
-
+echo modulus(10, 'a') . PHP_EOL; 
 
 ?>
