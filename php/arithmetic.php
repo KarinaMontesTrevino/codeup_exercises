@@ -43,7 +43,7 @@ function check_numeric($number1, $number2){
         echo "[ERROR] Invalid input, both arguments should be numeric\n";
         var_dump($number1);
         var_dump($number2);
-         //exit(0);
+         exit(0);
      }     
 
 }
