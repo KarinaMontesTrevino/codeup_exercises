@@ -2,33 +2,24 @@
 
 // function that adds two numbers and prints the result of the sum
 function add($number1, $number2 ){
-
-	if (is_numeric($number1) && is_numeric($number2)){
-	    echo "The addition of number 1 and number 2 is = " . ($number1 + $number2) . PHP_EOL;
-	}else{
-		echo "[ERROR] Invalid input, {$number1} or {$number2} are not numeric" . PHP_EOL;
-	}
+	check_numeric($number1, $number2);
+	echo "The addition of number 1 and number 2 is = " . ($number1 + $number2) . PHP_EOL;
+	
 }
 
 // function that substracts two numbers and prints the result of the substraction
 function susbtract($number1, $number2){
-	if (is_numeric($number1) && is_numeric($number2)){
-	    echo "The substraction of number 1 and number 2 is = " . ($number1 - $number2) . PHP_EOL;
-	}else{
-		echo "[ERROR] Invalid input, {$number1} or {$number2} are not numeric" . PHP_EOL;
-	}
+	check_numeric($number1, $number2);	    
+	echo "The substraction of number 1 and number 2 is = " . ($number1 - $number2) . PHP_EOL;
 }	
 
 // function that multiplies two numbers and prints the result of the multiplication
-function multiply($number1, $number2 = 0){
-	if (is_numeric($number1) && is_numeric($number2)){
-	    echo "The multiplication of number 1 and number 2 is = " . ($number1 * $number2) . PHP_EOL;
-	}else{
-		echo "[ERROR] Invalid input, {$number1} or {$number2} are not numeric" . PHP_EOL;
-	}
+function multiply($number1, $number2){
+	 check_numeric($number1, $number2);
+	 echo "The multiplication of number 1 and number 2 is = " . ($number1 * $number2) . PHP_EOL;
 }
 
-//function that divides two numbers and prints the result of the division 
+// function that divides two numbers and prints the result of the division 
 function divide($number1, $number2){
 	//checks if the numbers passed are both numeric and if the user is trying to divide by 0.
 	if ((is_numeric($number1) && is_numeric($number2)) && $number2 != 0){
@@ -42,14 +33,20 @@ function divide($number1, $number2){
 
 // function that gets the remainder of two number and prints the result
 function modulus($number1, $number2){
-	if (is_numeric($number1) && is_numeric($number2)){
+	check_numeric($number1, $number2);
 	echo "The remainder of the division between number 1 and number 2 is = " . ($number1 % $number2) . PHP_EOL;
-
-	}else{
-		echo "[ERROR] Invalid input, {$number1} or {$number2} are not numeric" . PHP_EOL;
-	}
 }
 
+// function that will validate the arguments being passed
+function check_numeric($number1, $number2){
+	if (!is_numeric($number1) || !is_numeric($number2)){
+        echo "[ERROR] Invalid input, both arguments should be numeric\n";
+        var_dump($number1);
+        var_dump($number2);
+         //exit(0);
+     }     
+
+}
 
 
 add(10, ' asds ');
