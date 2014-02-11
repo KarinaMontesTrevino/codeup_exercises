@@ -30,13 +30,13 @@ function multiply($number1, $number2 = 0){
 
 //function that divides two numbers and prints the result of the division
 function divide($number1, $number2){
-	if (is_numeric($number1) && is_numeric($number2)){
-	echo "The division of number 1 and number 2 is = " . ($number1 % $number2) . PHP_EOL;
-
-	}else{
+	if ((is_numeric($number1) && is_numeric($number2)) && $number2 != 0){
+	    echo "The division of number 1 and number 2 is = " . ($number1 / $number2) . PHP_EOL;
+	}elseif (!is_numeric($number1) || !is_numeric($number2)){
 		echo "[ERROR] Invalid input, both arguments have to be numeric" . PHP_EOL;
-	}
-
+    }else{
+    	echo "[ERROR] Invalid input, we can't divide by 0" . PHP_EOL;
+    }
 }
 
 // function that gets the remainder of two number and prints the result
@@ -54,7 +54,7 @@ function modulus($number1, $number2){
 add(10, ' asds ');
 susbtract (40, 30);
 multiply( false, 5);
-divide(false, 0);
+divide(10, 0);
 modulus(10, 5);
 
 
