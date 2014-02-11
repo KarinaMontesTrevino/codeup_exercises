@@ -34,4 +34,21 @@ divide($first_number, $second_number);
 modulus($first_number,$second_number);
 
 
+//trim($item) . PHP_EOL;      
+function trim_with_new_line ($item, $newline = TRUE){
+    if($newline ===TRUE){
+       echo trim($item) . PHP_EOL;
+    }else{
+	   echo trim($item);
+    }
+
+trim_with_new_line('   Jason    ', FALSE);
+//trim_with_new_line('   Jason    ');
+}
+
+
+function add($num1= 0, $num2 = 0){
+	echo ((int) $num1 + (int) $num2);
+}
+
 ?>

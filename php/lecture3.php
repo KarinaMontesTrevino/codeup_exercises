@@ -9,12 +9,10 @@ fwrite(STDOUT, "Hello, choose 1 for heads and 2 for tails what is your option ?\
 $option = fgets(STDIN);
 
 if($option == $coin){
-	echo "that is tight, nobody wins\n";
+	echo "Match, you win!\n";
 
-}elseif($option < $coin){
-	echo "you have head, you win!\n";
 }else{
-	echo "you have tail, you lose!\n";
+	echo "Doesn't match, you lose!\n";
 }
 
 
