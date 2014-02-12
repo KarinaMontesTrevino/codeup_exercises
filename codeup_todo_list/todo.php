@@ -10,12 +10,14 @@ function list_items($items){
     // [1] TODO item 1
     // [2] TODO item 2 - blahs
     // DO NOT USE ECHO, USE RETURN
+
+    // declare variable array_converto_string
      $array_converto_string = '';
     
     foreach ($items as $key => $item) {
 
-       $key++;
-       $array_converto_string .=  "[$key]" . " TODO " . $item . PHP_EOL;  //same as $arrray_convert_string = $arrray_convert_string 
+       $newIndex = $key + 1;     //insead of key++
+       $array_converto_string .=  "[" . $newIndex . "]" . $item . PHP_EOL;  //same as $arrray_convert_string = $arrray_convert_string 
 
     }
 
@@ -40,13 +42,22 @@ function get_input($upper = false) {
 }
 
 
+// function sort_menu($sorting = false){
+
+//    if ($sorting){
+//         $sorting = sort($sorting);
+//          return sorting; 
+//     } 
+// } 
+
+
 // The loop!
 do {
      // Echo the list produced by the function
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (Q)uit : ';
+    echo '(N)ew item, (R)emove item, (S)ort items, (Q)uit : ';
 
     // Get the input from user
     // Use trim() to remove whitespace and newlines
@@ -55,7 +66,7 @@ do {
 
     // Check for actionable input
     if ($input == 'N') {
-        // Ask for entry
+        // Ask for entrys
         echo 'Enter item: ';
         // Add entry to list array
         $items[] = trim(fgets(STDIN));
@@ -65,7 +76,21 @@ do {
         // Get array key
         $key = trim(fgets(STDIN));
         // Remove from array
-        unset($items[--$key]);
+        unset($items[$key -1]);
+    }elseif ($input == 'S') {
+        //sort (A)-(Z)
+        echo "Choose an option!!" . PHP_EOL;
+        echo "Option 1: sort A-Z " . PHP_EOL;
+        echo  "Option 2: sort Z-A" . PHP_EOL;
+        $input = trim(fgets(STDIN));
+
+        if ($input == 1){
+            sort($items);
+            
+        }else{
+            rsort($items);
+        }
+
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
