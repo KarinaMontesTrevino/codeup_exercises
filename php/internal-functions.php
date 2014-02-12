@@ -27,6 +27,9 @@ function set_empty_var($name, $value){
 set_empty_var('nothing ', $nothing) . PHP_EOL;
 set_empty_var('something ', $something) . PHP_EOL;
 
+$serialized = serialize($array);
+echo $serialized . "\n";
+
 
 
 ?>
