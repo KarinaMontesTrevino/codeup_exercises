@@ -1,42 +1,31 @@
 <?php
 
 $nothing = NULL;
-$something = '';
+$something = "";
 $array = array(1,2,3);
 
 
 
 
-function set_empty_var($variable){
+function set_empty_var($name, $value){
 	
-	if (isset($variable)){
+	if (isset($value)){
         
-        echo '$nothing is SET';    
+       echo $name . "is SET\n";   
 
+    }
+
+
+	if (empty($value)){
+
+		echo $name . "is EMPTY\n";
 	}
-
-
-	if (empty($variable)){
-
-		echo '$nothing is EMPTY';
-	}
-
-
-	// if (is_null($variable)){
-       
- //        echo  '$nothing is EMPTY';
-
-	// }
 
 
 }
 
-$serialized = serialize($array);
-echo $serialized;
-
-$deserialized = unserialize($serialized);
-var_dump($deserialized);
-
+set_empty_var('nothing ', $nothing) . PHP_EOL;
+set_empty_var('something ', $something) . PHP_EOL;
 
 
 
