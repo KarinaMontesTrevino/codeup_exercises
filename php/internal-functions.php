@@ -5,10 +5,14 @@ $something = "";
 $array = array(1,2,3);
 
 
+
 // function that tests if a variable is set|empty
 
 function set_empty_var($name, $value){
-	
+
+//unsets the variable $nothing
+   unset($nothing);
+
 	if (isset($value)){
         
        echo $name . "is SET\n";   
