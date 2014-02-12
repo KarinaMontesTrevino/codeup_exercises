@@ -4,22 +4,17 @@
 $items = array();
 
 // List array items formatted for CLI
-function list_items($items){
+function list_items($items)
+{
     // Return string of list items separated by newlines.
     // Should be listed [KEY] Value like this:
     // [1] TODO item 1
     // [2] TODO item 2 - blahs
     // DO NOT USE ECHO, USE RETURN
-     $array_converto_string = '';
-    
     foreach ($items as $key => $item) {
-
-       $key++;
-       $array_converto_string .=  "[$key]" . " TODO " . $item . PHP_EOL;  //same as $arrray_convert_string = $arrray_convert_string 
-
-    }
-
-    return $array_converto_string;
+    $key++;
+    return "[{$key}] TODO [{$item}]";
+    } 
     
 }
 
@@ -28,21 +23,16 @@ function list_items($items){
 function get_input($upper = false) {
 
 
-    if ($upper){
+    if ($upper= TRUE){
          // Return filtered STDIN input
-        $upper = strtoupper(trim(fgets(STDIN)));
-         return $upper;
-    }else{
+        return $upper = trim (strtoupper(STDIN)) . PHP_EOL;
 
-        $upper = trim (fgets(STDIN));
-        return $upper;
-    }
+    }return FALSE;
 }
-
 
 // The loop!
 do {
-     // Echo the list produced by the function
+    // Echo the list produced by the function
     echo list_items($items);
 
     // Show the menu options
@@ -51,21 +41,20 @@ do {
     // Get the input from user
     // Use trim() to remove whitespace and newlines
     $input = get_input(TRUE);
-    //echo $input . PHP_EOL;
 
     // Check for actionable input
     if ($input == 'N') {
         // Ask for entry
         echo 'Enter item: ';
         // Add entry to list array
-        $items[] = trim(fgets(STDIN));
+        $items[] = get_input();
     } elseif ($input == 'R') {
         // Remove which item?
         echo 'Enter item number to remove: ';
         // Get array key
-        $key = trim(fgets(STDIN));
+        $key = get_input();
         // Remove from array
-        unset($items[--$key]);
+        unset($items[$key]);
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
@@ -75,3 +64,5 @@ echo "Goodbye!\n";
 
 // Exit with 0 errors
 exit(0);
+
+?>
