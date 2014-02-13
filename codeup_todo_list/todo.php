@@ -30,7 +30,8 @@ function list_items($items){
 function get_input($upper = false) {
 
 
-    if ($upper){
+    if ($upper){   //if $upper ==true  or if there is anything in there                  
+
          // Return filtered STDIN input
         $upper = strtoupper(trim(fgets(STDIN)));
          return $upper;
@@ -68,8 +69,23 @@ do {
     if ($input == 'N') {
         // Ask for entrys
         echo 'Enter item: ';
-        // Add entry to list array
-        $items[] = trim(fgets(STDIN));
+
+        $input = trim(fgets(STDIN));
+        // Choose where to add the entry to list at the beginning or at the end
+        echo 'Press 1 to add your new item to the beginning of the list ' . PHP_EOL;
+        echo 'Press 2 to add your new item to the end of the list' . PHP_EOL;
+
+        // stores the option of the user
+        $option = trim(fgets(STDIN));
+
+             // tests the option of the user to decide where to add it
+             if ($option ==1){
+                  array_unshift($items, $input);       
+             }else{
+                array_push($items, $input);
+             }
+
+        //$items[] = trim(fgets(STDIN));
     } elseif ($input == 'R') {
         // Remove which item?
         echo 'Enter item number to remove: ';
@@ -90,7 +106,15 @@ do {
         }else{
             rsort($items);
         }
+    //special feature in the main menu that allow to remove the first item on the list
+    }elseif ($input == 'F'){
 
+        array_shift($items);
+
+    //special feature in the main menu that allow to remove the last item on the list     
+    }elseif ($input == 'L'){
+
+        array_pop($items);
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
