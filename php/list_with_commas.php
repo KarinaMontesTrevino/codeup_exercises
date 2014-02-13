@@ -3,6 +3,7 @@
 // Converts array into list n1, n2, ..., and n3
 function humanized_list($get_input, $sorting = false) {
   // Your solution goes here!
+    // takes a string and converts it into an array
     $exploded = explode(', ', $get_input);
      
 	// test if the user wants to sort 
