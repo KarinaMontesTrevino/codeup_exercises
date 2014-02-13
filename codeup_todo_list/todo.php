@@ -81,7 +81,7 @@ do {
         //sort (A)-(Z)
         echo "Choose an option!!" . PHP_EOL;
         echo "Option 1: sort A-Z " . PHP_EOL;
-        echo  "Option 2: sort Z-A" . PHP_EOL;
+        echo "Option 2: sort Z-A" . PHP_EOL;
         $input = trim(fgets(STDIN));
 
         if ($input == 1){
