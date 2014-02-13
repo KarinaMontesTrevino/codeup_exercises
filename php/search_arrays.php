@@ -36,15 +36,15 @@ var_dump(array_find('Bob', $names)) . PHP_EOL;
 
 
 // function that compares two arrays and determines how many values they have in common
-function array_comparison($first_array, $second_array){
+function array_comparison($values, $array){
 
      // initialize the variable that will count the values in common
     $count_records = 0;
 
     // iterates through the array and checks for coincidences
-	foreach ($first_array as $key => $value){
+	foreach ($values as $value){
 
-           $check = array_find($value, $second_array);
+           $check = array_find($value, $array);
             
             // if there is a value in common
             if($check){
@@ -58,5 +58,24 @@ function array_comparison($first_array, $second_array){
 
 // test the function that determines how many values 2 arrays have in common
 echo array_comparison($names, $compare) . PHP_EOL;
+
+
+//Alternative solution
+// function count_matches($needles, $haystack)
+// {
+//      $numberofmatches= 0;
+
+//      foreach ($needles as $needle){
+
+//              $result = array_search($needle, $haystack);
+//              if(is_numeric($result)){
+//                 $numberofmatches ++;
+//              }
+
+//      }
+//       return $numberofmatches;
+// }
+
+
 
 ?>
