@@ -41,7 +41,7 @@ function open_file(){
     echo "Enter the path and the name of the file:  ";
 
     // Stores the input from user
-    $filename = get_input(true);
+    $filename = get_input();
 
     // Opens the file and indicates read only
     $handle = fopen($filename, "r");
@@ -111,14 +111,13 @@ do {
 
         $input = get_input();
         // Choose where to add the entry to list at the beginning or at the end
-        echo '[Press 1]: add item to the beginning of the list ' . PHP_EOL;
-        echo '[Press 2]: add item to the end of the list  ';
-
+        echo 'Where do you want to add the item ? (B)eginning or to the (E)nd of the list:  '; 
+        
         // stores the option of the user
-        $option = get_input();
+        $option = get_input(true);
 
              // tests the option of the user to decide where to add it
-             if ($option == '1'){
+             if ($option == 'B'){
                   array_unshift($items, $input);       
              }else{
                 array_push($items, $input);
@@ -134,11 +133,10 @@ do {
         unset($items[$key -1]);
     }elseif ($input == 'S') {
         //sort (A)-(Z)
-        echo "[Option 1]: sort A-Z " . PHP_EOL;
-        echo "[Option 2]: sort Z-A  "; 
-        $input = get_input();
+        echo 'Press (A) to sort A-Z  or (Z) to sort Z-A:  ';
+        $input = get_input(true);
 
-        if ($input == '1'){
+        if ($input == 'A'){
             sort($items);
             
         }else{
