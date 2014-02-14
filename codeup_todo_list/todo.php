@@ -37,6 +37,7 @@ function get_input($upper = false) {
     }
 }
 
+// Function to open a file and read it
 function open_file(){
 
     // Prompts the user to enter the path and name of the file
@@ -55,7 +56,29 @@ function open_file(){
     fclose($handle);
 
     // Convert the contents of the file into an array 
-    return explode("\n", $contents);
+    return explode(PHP_EOL, $contents);
+}
+
+// Function that saves a file
+function write_file($array){
+    // Prompts the user to enter the path and name of the file
+    echo "Enter the path and the name of the file:  ";
+
+       // Stores the input from user
+        $filename = get_input();
+        // Opens the file and indicates to start at the beginning of the file and removes the content, or creates a new file if it does not exist 
+        $handle = fopen($filename, 'w');
+
+        //iterates through our array of items and saves each element with a new line
+          foreach ($array as $item) {
+             
+           fwrite($handle, PHP_EOL . $item);
+          }
+    // Alerts the user the file has been saved successfully      
+    echo "File Saved Sucessfully" . PHP_EOL; 
+    
+    // close the connection to the file 
+    fclose($handle);    
 }
 
 
@@ -65,12 +88,12 @@ do {
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (S)ort items, (O)pen file, (Q)uit :  ';
+    echo '(N)ew item, (R)emove item, (S)ort items, (O)pen file, (SA)ve, (Q)uit :  ';
 
     // Get the input from user
     // Use trim() to remove whitespace and newlines
     $input = get_input(TRUE);
-    //echo $input . PHP_EOL;
+    //echo $input . PHP_EOL; 
 
     // Check for actionable input
     if ($input == 'N') {
@@ -145,6 +168,9 @@ do {
             
         // add the new incoming array to the existing array 
         $items = array_merge($items,$content_array);
+    }elseif ($input == 'SA'){
+         write_file($items);  
+        //$items = array_merge($items);
     }
 
 // Exit when input is (Q)uit
