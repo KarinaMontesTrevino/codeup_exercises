@@ -64,22 +64,36 @@ function write_file($array){
     // Prompts the user to enter the path and name of the file
     echo "Enter the path and the name of the file:  ";
 
-       // Stores the input from user
-        $filename = get_input();
-        // Opens the file and indicates to start at the beginning of the file and removes the content, or creates a new file if it does not exist 
-        $handle = fopen($filename, 'w');
+    // Stores the input from user
+    $filename = get_input();
+       
+    if (file_exists($filename)){
 
-        //iterates through our array of items and saves each element with a new line
-          foreach ($array as $item) {
+           echo "The file you are trying to save already exists, do you wish to continue (Y)es or (N):  ";
+           $input = get_input(true);
+
+           if ($input == 'Y'){
+              
+                // Opens the file and indicates to start at the beginning of the file and removes the content, or creates a new file if it does not exist 
+               $handle = fopen($filename, 'w');
+
+                //iterates through our array of items and saves each element with a new line
+                foreach ($array as $item) {
              
-           fwrite($handle, PHP_EOL . $item);
-          }
-    // Alerts the user the file has been saved successfully      
-    echo "File Saved Sucessfully" . PHP_EOL; 
-    
-    // close the connection to the file 
-    fclose($handle);    
-}
+                       fwrite($handle, PHP_EOL . $item);
+                 } 
+                // Alerts the user the file has been saved successfully      
+                 echo "File Saved Sucessfully" . PHP_EOL; 
+                 // close the connection to the file 
+                   fclose($handle);
+           }else {
+                 echo "Nothing has been saved, you canceled the operation" . PHP_EOL;
+           }// close if input 'Y'
+
+    }// Close the if file exists
+ 
+        
+}// closes the function
 
 
 // The loop!
@@ -163,14 +177,14 @@ do {
         }
 
     }elseif ($input == 'O'){
-        //Open a file that the user indicated
+        //Open the file that the user indicated
         $content_array = open_file();
             
         // add the new incoming array to the existing array 
         $items = array_merge($items,$content_array);
     }elseif ($input == 'SA'){
+        // Saves the file that the user indicated
          write_file($items);  
-        //$items = array_merge($items);
     }
 
 // Exit when input is (Q)uit
