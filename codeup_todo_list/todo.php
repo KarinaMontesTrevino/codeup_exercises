@@ -5,11 +5,6 @@ $items = array();
 
 // List array items formatted for CLI
 function list_items($items){
-    // Return string of list items separated by newlines.
-    // Should be listed [KEY] Value like this:
-    // [1] TODO item 1
-    // [2] TODO item 2 - blahs
-    // DO NOT USE ECHO, USE RETURN
 
     // declare variable array_converto_string
      $array_converto_string = '';
@@ -42,14 +37,26 @@ function get_input($upper = false) {
     }
 }
 
+function open_file(){
 
-// function sort_menu($sorting = false){
+    // Prompts the user to enter the path and name of the file
+    echo "Enter the path and the name of the file:  ";
 
-//    if ($sorting){
-//         $sorting = sort($sorting);
-//          return sorting; 
-//     } 
-// } 
+    // Stores the input from user
+    $filename = get_input();
+
+    // Opens the file and indicates read only
+    $handle = fopen($filename, "r");
+
+    // Reads the contents of the file
+    $contents = fread($handle, filesize($filename));
+
+    // close the connection to the file
+    fclose($handle);
+
+    // Convert the contents of the file into an array 
+    return explode("\n", $contents);
+}
 
 
 // The loop!
@@ -58,7 +65,7 @@ do {
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (S)ort items, (Q)uit : ';
+    echo '(N)ew item, (R)emove item, (S)ort items, (O)pen file, (Q)uit :  ';
 
     // Get the input from user
     // Use trim() to remove whitespace and newlines
@@ -68,18 +75,18 @@ do {
     // Check for actionable input
     if ($input == 'N') {
         // Ask for entrys
-        echo 'Enter item: ';
+        echo 'Enter item:  ';
 
-        $input = trim(fgets(STDIN));
+        $input = get_input();
         // Choose where to add the entry to list at the beginning or at the end
-        echo 'Press 1 to add your new item to the beginning of the list ' . PHP_EOL;
-        echo 'Press 2 to add your new item to the end of the list' . PHP_EOL;
+        echo '[Press 1]: add item to the beginning of the list ' . PHP_EOL;
+        echo '[Press 2]: add item to the end of the list  ';
 
         // stores the option of the user
-        $option = trim(fgets(STDIN));
+        $option = get_input();
 
              // tests the option of the user to decide where to add it
-             if ($option ==1){
+             if ($option == '1'){
                   array_unshift($items, $input);       
              }else{
                 array_push($items, $input);
@@ -88,34 +95,58 @@ do {
         //$items[] = trim(fgets(STDIN));
     } elseif ($input == 'R') {
         // Remove which item?
-        echo 'Enter item number to remove: ';
+        echo 'Enter item number to remove:  ';
         // Get array key
         $key = trim(fgets(STDIN));
         // Remove from array
         unset($items[$key -1]);
     }elseif ($input == 'S') {
         //sort (A)-(Z)
-        echo "Choose an option!!" . PHP_EOL;
-        echo "Option 1: sort A-Z " . PHP_EOL;
-        echo "Option 2: sort Z-A" . PHP_EOL;
-        $input = trim(fgets(STDIN));
+        echo "[Option 1]: sort A-Z " . PHP_EOL;
+        echo "[Option 2]: sort Z-A  "; 
+        $input = get_input();
 
-        if ($input == 1){
+        if ($input == '1'){
             sort($items);
             
         }else{
             rsort($items);
         }
-    //special feature in the main menu that allow to remove the first item on the list
+    //special feature in the main menu that allows to remove the first item on the list
     }elseif ($input == 'F'){
-
-        array_shift($items);
+        // Prompt for confirmation 
+        echo "Are you sure to remove the first item (Y)es or (N)o?  ";
+        $input = get_input(true);
+        // if the user says yes it removes the first element of the list
+        if ($input == 'Y'){ 
+          array_shift($items);
+          echo "Item sucessfully removed " . PHP_EOL;
+         // if the user says no nothing gets removed 
+        }else{
+          echo "Don't worry, nothing has been removed" . PHP_EOL;
+        }
 
     //special feature in the main menu that allow to remove the last item on the list     
     }elseif ($input == 'L'){
-
+        echo "Are you sure to remove the last item (Y)es or (N)o ?  ";
+        $input = get_input(true);
+        // if the user says yes it removes the last element of the list
+        if ($input == 'Y'){ 
         array_pop($items);
+         echo "Item sucessfully removed " . PHP_EOL;
+         // if the user says no nothing gets removed 
+        }else{
+          echo "Don't worry, nothing has been removed" . PHP_EOL;
+        }
+
+    }elseif ($input == 'O'){
+        //Open a file that the user indicated
+        $content_array = open_file();
+            
+        // add the new incoming array to the existing array 
+        $items = array_merge($items,$content_array);
     }
+
 // Exit when input is (Q)uit
 } while ($input != 'Q');
 
@@ -124,3 +155,5 @@ echo "Goodbye!\n";
 
 // Exit with 0 errors
 exit(0);
+
+?>
