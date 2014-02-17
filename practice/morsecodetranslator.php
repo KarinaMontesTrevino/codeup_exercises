@@ -74,13 +74,9 @@ function get_input($upper = false){
     
 }
 
-
-
-
-echo PHP_EOL . "What do you want to translate to morse code?: ";
-  $text_translate = get_input(true);
-  //$string_to_array = str_split($input_to_translate);
- // print_r($string_to_array);
+echo "Enter the text you want to translate to morse code: " .PHP_EOL;
+$text_translate = get_input(true);
+  
 
  function codify($string, $array_morse){
            
