@@ -60,6 +60,5 @@ $small_pizza = 4;
 echo "Large Pizzas:  " . $total_large_pizza . PHP_EOL;
 echo "Medium Pizzas: " . $total_medium_pizza . PHP_EOL;
 echo "Small Pizzas:  " . $total_small_pizza . PHP_EOL;
-//echo "You have an incomplete pizza, extra slices you will need" . $incomplete_pizza;
 
 ?>
